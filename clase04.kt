@@ -1,9 +1,24 @@
-fun main() {
+data class Student(
+    val id: Long,
+    val name: String,
+    val email: String,
+    val grade: Int,
+    val isActive: Boolean
+)
 
+fun getStudentResult(student: Student): String {
+    return when (student.grade) {
+        in 9..10 -> "Sobresaliente"
+        in 7..8 -> "Aprobado"
+        in 0..6 -> "Reprobado"
+        else -> "Nota invalida"
+    }
+}
+
+fun main() {
     val name: String = "Andres"
     val lastName: String = "Criollo"
-
-    println("Hello $name $lastName!!!")
+    println("Hola $name $lastName")
 
     val student = Student(
         id = 1,
@@ -12,67 +27,44 @@ fun main() {
         grade = 8,
         isActive = false
     )
+    println(student)
+    
+    if(student.isActive){
+        println("El estudiante ${student.name} esta activo")
+    } else {
+        println("El estudiante ${student.name} No esta activo")
+    }
+
+    val status: String = if(student.isActive){
+        "Activo"
+    } else {
+        "Inactivo"
+    }
+    println("El estudiante ${student.name} esta $status")
 
     val student2 = Student(
         id = 2,
-        name = "Juan",
-        email = "Juan@gmail.com",
-        grade = 9,
-        isActive = false
-    )
-
-    val student3 = Student(
-        id = 3,
         name = "Tamara",
         email = "Tamara@gmail.com",
         grade = 4,
         isActive = true
     )
 
-    val students = listOf(student, student2, student3)
+    val student3 = Student(
+        id = 3,
+        name = "Juan",
+        email = "Juan@gmail.com",
+        grade = 9,
+        isActive = true
+    )
 
+    val students = listOf(student, student2, student3)
     println(students)
 
-    for (studentItem in students) {
-
-        println("${studentItem.name}")
-        println("${studentItem.grade}")
-    }
-
-    for (miVariable in students) {
-
-        if (miVariable.isActive) {
-
-            println("${miVariable.name} - ${miVariable.grade}")
-
-            val status: String = if (miVariable.isActive) {
-                "Activo"
-            } else {
-                "Inactivo"
-            }
-
-            println("El estudiante ${miVariable.name} esta $status")
+    for (miVariable in students){
+        if(miVariable.isActive){
+            println("${miVariable.name} - ${miVariable.grade} - ${getStudentResult(miVariable)}")
         }
     }
 
-    val result = when (student.grade) {
-
-        in 9..10 -> "Sobresaliente"
-
-        in 7..8 -> "Aprobado"
-
-        in 0..6 -> "Reprobado"
-
-        else -> "Nota invalida"
-    }
-
-    println("${student.name}: $result")
 }
-
-data class Student(
-    val id: Long,
-    val name: String,
-    val email: String,
-    val grade: Int,
-    val isActive: Boolean
-)
