@@ -9,7 +9,7 @@ fun main() {
         id = 1,
         name = "Ana",
         email = "Ana@gmail.com",
-        grade = 18,
+        grade = 8,
         isActive = false
     )
 
@@ -17,7 +17,7 @@ fun main() {
         id = 2,
         name = "Juan",
         email = "Juan@gmail.com",
-        grade = 19,
+        grade = 9,
         isActive = false
     )
 
@@ -25,7 +25,7 @@ fun main() {
         id = 3,
         name = "Tamara",
         email = "Tamara@gmail.com",
-        grade = 89,
+        grade = 4,
         isActive = true
     )
 
@@ -54,6 +54,19 @@ fun main() {
             println("El estudiante ${miVariable.name} esta $status")
         }
     }
+
+    val result = when (student.grade) {
+
+        in 9..10 -> "Sobresaliente"
+
+        in 7..8 -> "Aprobado"
+
+        in 0..6 -> "Reprobado"
+
+        else -> "Nota invalida"
+    }
+
+    println("${student.name}: $result")
 }
 
 data class Student(
