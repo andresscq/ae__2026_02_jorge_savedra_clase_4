@@ -1,9 +1,3 @@
-/**
- * You can edit, run, and share this code.
- * play.kotlinlang.org
- */
-
-
 fun main() {
 
     val name: String = "Andres"
@@ -26,6 +20,14 @@ fun main() {
     } else {
         println("El estudiante ${student.name} NO esta activo")
     }
+
+    val status: String = if (student.isActive) {
+        "Activo"
+    } else {
+        "Inactivo"
+    }
+
+    println("El estudiante ${student.name} esta $status")
 }
 
 data class Student(
