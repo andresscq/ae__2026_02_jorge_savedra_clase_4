@@ -13,21 +13,47 @@ fun main() {
         isActive = false
     )
 
-    println(student)
+    val student2 = Student(
+        id = 2,
+        name = "Juan",
+        email = "Juan@gmail.com",
+        grade = 19,
+        isActive = false
+    )
 
-    if (student.isActive) {
-        println("El estudiante ${student.name} esta activo")
-    } else {
-        println("El estudiante ${student.name} NO esta activo")
+    val student3 = Student(
+        id = 3,
+        name = "Tamara",
+        email = "Tamara@gmail.com",
+        grade = 89,
+        isActive = true
+    )
+
+    val students = listOf(student, student2, student3)
+
+    println(students)
+
+    for (studentItem in students) {
+
+        println("${studentItem.name}")
+        println("${studentItem.grade}")
     }
 
-    val status: String = if (student.isActive) {
-        "Activo"
-    } else {
-        "Inactivo"
-    }
+    for (miVariable in students) {
 
-    println("El estudiante ${student.name} esta $status")
+        if (miVariable.isActive) {
+
+            println("${miVariable.name} - ${miVariable.grade}")
+
+            val status: String = if (miVariable.isActive) {
+                "Activo"
+            } else {
+                "Inactivo"
+            }
+
+            println("El estudiante ${miVariable.name} esta $status")
+        }
+    }
 }
 
 data class Student(
