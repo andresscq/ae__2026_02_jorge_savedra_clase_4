@@ -10,3 +10,10 @@ fun main() {
 
     println("Hello $name $lastName!!!")
 }
+
+data class Student (
+    val id: Long,
+    val name: String
+    val email: String
+
+)
